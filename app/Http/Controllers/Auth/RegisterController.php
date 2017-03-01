@@ -48,9 +48,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|min:6|confirmed',
+           'nombre' => 'required|max:255',
+           'apellido' => 'required|max:255',
+           'cedula' => 'required|max:8|unique:users',
+           'fecha_de_nacimiento' => 'max:255',
+           'edad' => 'max:255',
+           'sexo' => 'max:255',
+           'telefono' => 'max:255',
+           'celular' => 'max:255',
+           'direccion' => 'max:255',
+           'email' => 'required|email|max:255|unique:users',
+           'password' => 'required|min:6|confirmed',
         ]);
     }
 
@@ -63,9 +71,20 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+               'nombre' => $data['nombre'],
+               'apellido' => $data['apellido'],
+               'cedula' => $data['cedula'],
+               'fecha_de_nacimiento' => $data['fecha_de_nacimiento'],
+               'edad' => $data['edad'],
+               'sexo' => $data['sexo'],
+               'telefono' => $data['telefono'],
+               'celular' => $data['celular'],
+               'direccion' => $data['direccion'],
+               'email' => $data['email'],
+               'password' => bcrypt($data['password']),
         ]);
+        
+        $user->assignRole('Paciente');
+        return $user;
     }
 }

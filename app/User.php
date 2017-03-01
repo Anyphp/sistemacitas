@@ -8,8 +8,7 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use HasRoles;
+    use Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre', 'apellido', 'cedula', 'fecha_de_nacimiento', 'edad', 'sexo', 'telefono', 'direccion', 'email', 'password',
+        'nombre', 'apellido', 'cedula', 'fecha_de_nacimiento', 'edad', 'sexo', 'telefono', 'celular', 'direccion', 'email', 'password',
     ];
 
     /**
